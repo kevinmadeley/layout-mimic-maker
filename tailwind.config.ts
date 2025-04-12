@@ -21,7 +21,8 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Poppins', 'sans-serif'],
-				script: ['"Dancing Script"', 'cursive'],
+				script: ['Cinzel', 'serif'],
+				logo: ['"IM Fell English SC"', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

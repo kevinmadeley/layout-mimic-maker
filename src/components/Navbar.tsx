@@ -42,18 +42,30 @@ const Navbar: React.FC = () => {
         variants={navVariants}
         className={`fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}
       >
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="hidden md:flex items-center space-x-10">
-            {['Menu', 'About', 'Contact', 'Login'].map((item, index) => (
-              <motion.div key={item} whileHover="hover" variants={linkVariants}>
-                <Link 
-                  to={`/${item.toLowerCase()}`} 
-                  className="nav-link text-lg"
-                >
-                  {item}
-                </Link>
-              </motion.div>
+        <div className="container mx-auto px-4 flex justify-center items-center">
+          <div className="hidden md:flex items-center">
+            {['About', 'Contact', 'Login'].map((item, index) => (
+              <React.Fragment key={item}>
+                {index > 0 && <div className="nav-divider"></div>}
+                <motion.div whileHover="hover" variants={linkVariants}>
+                  <Link 
+                    to={`/${item.toLowerCase()}`} 
+                    className="nav-link text-lg px-4"
+                  >
+                    {item}
+                  </Link>
+                </motion.div>
+                {index === 2 && <div className="nav-divider"></div>}
+              </React.Fragment>
             ))}
+            <motion.div whileHover="hover" variants={linkVariants}>
+              <Link 
+                to="/menu" 
+                className="nav-link text-lg px-4"
+              >
+                Menu
+              </Link>
+            </motion.div>
           </div>
           <div className="md:hidden">
             <Button variant="ghost" className="text-white p-2" onClick={toggleMobileMenu}>
