@@ -101,22 +101,79 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 .logo {
   font-family: 'Dancing Script', cursive;
   font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.font-script {
+  font-family: 'Dancing Script', cursive;
 }
 
 .btn-primary {
-  @apply bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-semibold py-2 px-6 rounded-full transition duration-300;
+  @apply bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-semibold py-2 px-6 rounded-full transition duration-300 shadow-md;
 }
 
 .btn-secondary {
-  @apply bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded-full transition duration-300;
+  @apply bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-6 rounded-full transition duration-300 shadow-md;
 }
 
 .nav-link {
-  @apply text-white hover:text-yellow-300 transition duration-300;
+  @apply text-white hover:text-yellow-300 transition duration-300 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-yellow-300 after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.slide-in-top {
+  animation: slideInTop 0.6s ease-out forwards;
+}
+
+.slide-in-bottom {
+  animation: slideInBottom 0.6s ease-out forwards;
+}
+
+.scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInTop {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInBottom {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Card styling */
+.glass-card {
+  @apply backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl;
+}
+
+/* Page transitions */
+.page-transition {
+  animation: fadeIn 0.4s ease-out;
 }

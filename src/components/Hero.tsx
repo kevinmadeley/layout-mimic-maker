@@ -1,31 +1,60 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Hero: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
     <div className="min-h-screen relative flex items-center justify-center">
-      {/* Background image will be handled by the user */}
-      <div className="absolute inset-0 bg-black/40">
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40">
         {/* This overlay gives text better contrast */}
       </div>
       
-      <div className="container mx-auto px-4 z-10 text-center">
-        <h1 className="text-7xl font-bold text-white mb-4">Delicious Food</h1>
-        <p className="text-xl text-white/90 mb-10 max-w-3xl mx-auto">
-          Lorem ipsum dolor sit amet, consectetur alpiscing elit sed do
-        </p>
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="container mx-auto px-4 z-10 text-center"
+      >
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-7xl font-bold text-white mb-4 font-script"
+        >
+          Delicious Food
+        </motion.h1>
         
-        <div className="flex justify-center space-x-4">
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isVisible ? 1 : 0 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="text-xl text-white/90 mb-10 max-w-3xl mx-auto"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
+        </motion.p>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="flex justify-center space-x-4"
+        >
           <Link to="/menu">
-            <Button className="btn-primary text-lg px-8">View Menu</Button>
+            <Button className="btn-primary text-lg px-8 hover:scale-105 transition-transform">View Menu</Button>
           </Link>
           <Link to="/order">
-            <Button className="btn-secondary text-lg px-8">Order Now</Button>
+            <Button className="btn-secondary text-lg px-8 hover:scale-105 transition-transform">Order Now</Button>
           </Link>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
