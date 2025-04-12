@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-7xl font-bold text-white mb-4 font-script"
         >
-          Delicious Food
+          Heights & Bites
         </motion.h1>
         
         <motion.p 
@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="text-xl text-white/90 mb-10 max-w-3xl mx-auto"
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
+          Elevate Your Dining Experience: Gourmet Flavors, Breathtaking Views
         </motion.p>
         
         <motion.div 
