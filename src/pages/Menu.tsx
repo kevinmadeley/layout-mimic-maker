@@ -9,6 +9,7 @@ import {
   TabsTrigger 
 } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { ChefHat, Flame, Cheese, Fries, CupSoda, ShoppingCart } from 'lucide-react';
 
 interface MenuItem {
   id: number;
@@ -16,22 +17,86 @@ interface MenuItem {
   description: string;
   price: string;
   category: string;
+  icon?: React.ReactNode;
 }
 
 const menuItems: MenuItem[] = [
-  { id: 1, name: "Classic Burger", description: "Juicy beef patty with lettuce, tomato, and our special sauce", price: "$12.99", category: "mains" },
-  { id: 2, name: "Cheese Burger", description: "Classic burger with melted cheddar cheese", price: "$14.99", category: "mains" },
-  { id: 3, name: "Chicken Sandwich", description: "Grilled chicken breast with avocado and aioli", price: "$13.99", category: "mains" },
-  { id: 4, name: "Caesar Salad", description: "Crisp romaine lettuce with croutons and caesar dressing", price: "$9.99", category: "starters" },
-  { id: 5, name: "Bruschetta", description: "Toasted bread topped with tomatoes, garlic, and basil", price: "$8.99", category: "starters" },
-  { id: 6, name: "French Fries", description: "Crispy golden fries with sea salt", price: "$5.99", category: "sides" },
-  { id: 7, name: "Onion Rings", description: "Crispy battered onion rings", price: "$6.99", category: "sides" },
-  { id: 8, name: "Chocolate Cake", description: "Rich chocolate cake with a molten center", price: "$7.99", category: "desserts" },
-  { id: 9, name: "Cheesecake", description: "Creamy New York style cheesecake", price: "$8.99", category: "desserts" },
+  { 
+    id: 1, 
+    name: "Atteri-Classic Grilled Chicken Wrap", 
+    description: "Tender grilled chicken strips, crisp lettuce, fresh tomato, cool cucumber, and creamy mayonnaise hugged in a soft tortilla wrap. Simple, fresh, delicious!", 
+    price: "R68.00", 
+    category: "wraps",
+    icon: <ChefHat className="text-yellow-300" />
+  },
+  { 
+    id: 2, 
+    name: "Pheli-Hot Peri-Peri Chicken Wrap", 
+    description: "Zesty grilled chicken strips tossed in our signature peri-peri sauce, with lettuce, tomato, and a hint of red onion, all rolled up for a flavour kick!", 
+    price: "R68.00", 
+    category: "wraps",
+    icon: <Flame className="text-orange-500" />
+  },
+  { 
+    id: 3, 
+    name: "Smokey BBQ Chicken & Cheese Wrap", 
+    description: "Juicy grilled chicken strips coated in a sweet and smokey BBQ sauce, topped with melted cheddar cheese and crisp lettuce in a warm tortilla. Addictive!", 
+    price: "R68.00", 
+    category: "wraps",
+    icon: <Cheese className="text-yellow-400" />
+  },
+  { 
+    id: 4, 
+    name: "Seasoned Chips", 
+    description: "Crispy golden fries lightly seasoned with our special blend of spices. The perfect partner for any wrap!", 
+    price: "R28.00", 
+    category: "sides",
+    icon: <Fries className="text-yellow-300" />
+  },
+  { 
+    id: 5, 
+    name: "Coca-Cola (330ml Can)", 
+    description: "The classic thirst quencher.", 
+    price: "R18.00", 
+    category: "drinks",
+    icon: <CupSoda className="text-red-500" />
+  },
+  { 
+    id: 6, 
+    name: "Fanta Orange (330ml Can)", 
+    description: "Bubbly and fruity orange refreshment.", 
+    price: "R18.00", 
+    category: "drinks",
+    icon: <CupSoda className="text-orange-400" />
+  },
+  { 
+    id: 7, 
+    name: "Sprite (330ml Can)", 
+    description: "Crisp lemon-lime flavour.", 
+    price: "R18.00", 
+    category: "drinks",
+    icon: <CupSoda className="text-green-400" />
+  },
+  { 
+    id: 8, 
+    name: "Still Water (500ml Bottle)", 
+    description: "Pure and simple hydration.", 
+    price: "R18.00", 
+    category: "drinks",
+    icon: <CupSoda className="text-blue-300" />
+  },
+  { 
+    id: 9, 
+    name: "Wrap Combo", 
+    description: "Your choice of any Chicken Wrap, served with a portion of Seasoned Chips and a 330ml Soft Drink Can.", 
+    price: "R105.00", 
+    category: "combos",
+    icon: <ShoppingCart className="text-yellow-300" />
+  },
 ];
 
 const Menu: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState("mains");
+  const [selectedCategory, setSelectedCategory] = useState("wraps");
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
@@ -77,18 +142,18 @@ const Menu: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-12 text-white/80"
         >
-          Explore our delicious offerings made with fresh ingredients
+          Delicious wraps made with fresh ingredients
         </motion.p>
 
-        <Tabs defaultValue="mains" onValueChange={setSelectedCategory} className="w-full max-w-4xl mx-auto">
+        <Tabs defaultValue="wraps" onValueChange={setSelectedCategory} className="w-full max-w-4xl mx-auto">
           <TabsList className="grid grid-cols-4 mb-8 bg-black/40 backdrop-blur-sm">
-            <TabsTrigger value="mains">Mains</TabsTrigger>
-            <TabsTrigger value="starters">Starters</TabsTrigger>
+            <TabsTrigger value="wraps">Wraps</TabsTrigger>
             <TabsTrigger value="sides">Sides</TabsTrigger>
-            <TabsTrigger value="desserts">Desserts</TabsTrigger>
+            <TabsTrigger value="drinks">Drinks</TabsTrigger>
+            <TabsTrigger value="combos">Combos</TabsTrigger>
           </TabsList>
           
-          {["mains", "starters", "sides", "desserts"].map((category) => (
+          {["wraps", "sides", "drinks", "combos"].map((category) => (
             <TabsContent key={category} value={category}>
               <motion.div 
                 variants={menuVariants}
@@ -103,7 +168,10 @@ const Menu: React.FC = () => {
                       <Card className="glass-card border-yellow-500/20 hover:border-yellow-500/50 transition-colors group">
                         <CardHeader className="pb-2">
                           <div className="flex justify-between items-start">
-                            <CardTitle className="text-white group-hover:text-yellow-300 transition-colors">{item.name}</CardTitle>
+                            <CardTitle className="text-white group-hover:text-yellow-300 transition-colors flex items-center gap-2">
+                              {item.icon}
+                              <span>{item.name}</span>
+                            </CardTitle>
                             <span className="text-yellow-400 font-bold">{item.price}</span>
                           </div>
                         </CardHeader>
