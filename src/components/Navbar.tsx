@@ -43,23 +43,17 @@ const Navbar: React.FC = () => {
         className={`fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}
       >
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link to="/" className="text-white text-4xl logo hover:text-yellow-300 transition-colors">
-            Heights & Bites
-          </Link>
           <div className="hidden md:flex items-center space-x-10">
-            {['Home', 'Menu', 'About', 'Contact', 'Login'].map((item, index) => (
+            {['Menu', 'About', 'Contact', 'Login'].map((item, index) => (
               <motion.div key={item} whileHover="hover" variants={linkVariants}>
                 <Link 
-                  to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} 
+                  to={`/${item.toLowerCase()}`} 
                   className="nav-link text-lg"
                 >
                   {item}
                 </Link>
               </motion.div>
             ))}
-            <Link to="/order">
-              <Button className="btn-primary hover:scale-105 transition-transform">Order Now</Button>
-            </Link>
           </div>
           <div className="md:hidden">
             <Button variant="ghost" className="text-white p-2" onClick={toggleMobileMenu}>
@@ -79,19 +73,16 @@ const Navbar: React.FC = () => {
           className="fixed top-16 left-0 right-0 z-40 bg-black/95 backdrop-blur-md md:hidden"
         >
           <div className="flex flex-col items-center py-8 space-y-6">
-            {['Home', 'Menu', 'About', 'Contact', 'Login'].map((item) => (
+            {['Menu', 'About', 'Contact', 'Login'].map((item) => (
               <Link 
                 key={item}
-                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} 
+                to={`/${item.toLowerCase()}`} 
                 className="nav-link text-xl"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item}
               </Link>
             ))}
-            <Link to="/order" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button className="btn-primary mt-4">Order Now</Button>
-            </Link>
           </div>
         </motion.div>
       )}

@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="text-xl text-white/90 mb-10 max-w-3xl mx-auto"
         >
-          Elevate Your Dining Experience: Gourmet Flavors, Breathtaking Views
+          Elevate Your Dining Experience: Gourmet Flavors, Breathtaking Flavours
         </motion.p>
         
         <motion.div 
@@ -49,9 +49,6 @@ const Hero: React.FC = () => {
         >
           <Link to="/menu">
             <Button className="btn-primary text-lg px-8 hover:scale-105 transition-transform">View Menu</Button>
-          </Link>
-          <Link to="/order">
-            <Button className="btn-secondary text-lg px-8 hover:scale-105 transition-transform">Order Now</Button>
           </Link>
         </motion.div>
       </motion.div>
